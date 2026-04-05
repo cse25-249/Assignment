@@ -1,27 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Hair and Beauty Parlour Listing - Wireframe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box;}
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+
+        header {
+            background: #ccc;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #999;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 70vh;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        aside {
+            background: #ddd;
+            width: 25%;
+            min-width: 200px;
+            padding: 20px;
+            border: 2px dashed #999;
+        }
+
+        main {
+            flex-grow: 1;
+            background: #eee;
+            padding: 20px;
+            border: 2px dashed #999;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .parlour-card {
+            background: #fff;
+            height: 150px;
+            border: 2px dashed #999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer {
+            background: #ccc;
+            height: 60px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #999;
+        }
+
+        @media (max-width: 768px) {
+            .layout {flex-direction: column;}
+            main {grid-template-columns: repeat(2, 1fr);}
+        }
+
+        @media (max-width: 480px) {
+            main {grid-template-columns: 1fr;}
+            aside {width: 100%;}
+        }
+
+    </style>
 </head>
 <body>
 
 <header>
-    <!-- Header goes here -->
+    Header
 </header>
 
-<div class="container">
+<div class="layout">
     <aside>
-        <!-- Sidebar / Filters -->
+        Sidebar / Filters
     </aside>
 
     <main>
-        <!-- Main content / Parlour listings -->
+        <section class="parlour-card">
+            <h3>Parlour Name</h3>
+            <p>Location: Gaborone</p>
+            <p>Services: Hair, Nails, Makeup</p>
+        </section>
+        <section class="parlour-card">
+            <h3>Parlour Name</h3>
+            <p>Location: Francistown</p>
+            <p>Services: Hair, Nails</p>
+        </section>
+        <section class="parlour-card">
+            <h3>Parlour Name</h3>
+            <p>Location: Maun</p>
+            <p>Services: Makeup</p>
+        </section>
+        <section class="parlour-card">
+            <h3>Parlour Name</h3>
+            <p>Location: Kasane</p>
+            <p>Services: Hair, Nails</p>
+        </section>
+        <section class="parlour-card">
+            <h3>Parlour Name</h3>
+            <p>Location: Gaborone</p>
+            <p>Services: Hair, Makeup</p>
+        </section>
+        <section class="parlour-card">
+            <h3>Parlour Name</h3>
+            <p>Location: Francistown</p>
+            <p>Services: Hair, Nails, Makeup</p>
+        </section>
     </main>
 </div>
 
 <footer>
-    <!-- Footer goes here -->
+    Footer
 </footer>
 
 </body>
