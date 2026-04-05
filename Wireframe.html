@@ -61,12 +61,23 @@
 
         footer {
             background: #ccc;
-            height: 60px;
+            height: auto;
+            padding: 20px;
             margin-top: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             border: 2px dashed #999;
+            text-align: center;
+            gap: 10px;
+        }
+
+        footer .footer-links, footer .contact-info, footer .social-media {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         @media (max-width: 768px) {
@@ -78,7 +89,6 @@
             main {grid-template-columns: 1fr;}
             aside {width: 100%;}
         }
-
     </style>
 </head>
 <body>
@@ -89,7 +99,16 @@
 
 <div class="layout">
     <aside>
-        Sidebar / Filters
+        <h3>Filters</h3>
+        <div>Location [Dropdown]</div>
+        <div>Services [Checkboxes]</div>
+        <div>Price Range [Slider]</div>
+
+        <h3>Navigation</h3>
+        <div>Home</div>
+        <div>Register Your Parlour</div>
+        <div>About</div>
+        <div>Contact</div>
     </aside>
 
     <main>
@@ -127,8 +146,22 @@
 </div>
 
 <footer>
-    Footer
+    <div class="footer-links">
+        <div>About</div>
+        <div>Contact</div>
+        <div>Privacy</div>
+        <div>FAQ</div>
+    </div>
+    <div class="contact-info">
+        <div>Email: info@beautyparlour.com</div>
+        <div>Phone: +267 XXX XXX</div>
+    </div>
+    <div class="social-media">
+        <div>Facebook</div>
+        <div>Instagram</div>
+        <div>TikTok</div>
+    </div>
 </footer>
 
 </body>
-</html>
+    </html>
