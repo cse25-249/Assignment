@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beauty Parlour Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f9f9f9;
+        }
+
+        header {
+            background: black;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .hero {
+            background: pink;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .controls {
+            text-align: center;
+            margin: 15px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 5px gray;
+        }
+
+        footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2> Beauty Parlour Finder</h2>
+</header>
+
+<div class="hero">
+    Find Parlours Near You 
+</div>
+
+<div class="controls">
+    <button onclick="getLocation()">Use My Location</button><br>
+
+    <select id="locationFilter" onchange="filterParlours()">
+        <option value="all">All Locations</option>
+        <option value="Gaborone">Gaborone</option>
+        <option value="Francistown">Francistown</option>
+        <option value="Maun">Maun</option>
+        <option value="Kasane">Kasane</option>
+    </select>
+
+    <p id="locationText"></p>
+</div>
+
+<div class="container" id="parlourList">
+
+    <div class="card" data-location="Gaborone">
+        <h3>Glow Beauty</h3>
+        <p>Gaborone</p>
+    </div>
+
+    <div class="card" data-location="Gaborone">
+        <h3>Elegant Touch</h3>
+        <p>Gaborone</p>
+    </div>
+
+    <div class="card" data-location="Francistown">
+        <h3>Beauty Hub</h3>
+        <p>📍 Francistown</p>
+    </div>
+
+    <div class="card" data-location="Maun">
+        <h3>Luxury Looks</h3>
+        <p>📍 Maun</p>
+    </div>
+
+    <div class="card" data-location="Kasane">
+        <h3>Fresh Glow</h3>
+        <p>📍 Kasane</p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Beauty Parlour
+</footer>
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(setLocation, error);
+    } else {
+        alert("Geolocation not supported.");
+    }
+}
+
+function setLocation(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    let city = detectCity(lat, lon);
+
+    document.getElementById("locationText").innerHTML =
+        "Detected Location: " + city;
+
+    document.getElementById("locationFilter").value = city;
+
+    filterParlours();
+}
+
+function detectCity(lat, lon) {
+    // Simple Botswana location ranges
+    if (lat < -24.5 && lon > 25.5) return "Gaborone";
+    if (lat > -21 && lat < -20) return "Francistown";
+    if (lat > -20 && lon < 24) return "Maun";
+    if (lat > -18) return "Kasane";
+
+    return "all";
+}
+
+function filterParlours() {
+    let selected = document.getElementById("locationFilter").value;
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (selected === "all" || card.dataset.location === selected) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function error() {
+    alert("Location access denied.");
+}
+</script>
+
+</body>
+</html>
