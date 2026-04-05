@@ -1,107 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hair and Beauty Parlour Listing</title>
+    <title>Hair and Beauty Parlour Listing - Wireframe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {font-family: Arial; margin:0; background:#f9f9f9;}
-        header{background:black;color:white;padding:15px;text-align:center;}
-        .hero{background:pink;text-align:center;padding:20px;}
-        .controls{text-align:center;margin:15px;}
-        input, select, button{padding:10px;margin:5px;width:80%;max-width:300px;}
-        .container{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding:15px;}
-        .card{background:white;padding:15px;border-radius:10px;text-align:center;box-shadow:0 0 5px gray;}
-        footer{background:black;color:white;text-align:center;padding:10px;}
+        body {font-family: Arial; margin:0; background:#f0f0f0;}
+        header{background:#ccc;color:black;padding:15px;text-align:center;}
+        .hero{background:#ddd;text-align:center;padding:20px;}
+        .section{padding:20px;}
+        .form-box, .card {background:white;padding:15px;border-radius:10px;margin-bottom:15px;box-shadow:0 0 3px gray;}
+        .container{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
         @media(max-width:768px){.container{grid-template-columns:repeat(2,1fr);}}
         @media(max-width:480px){.container{grid-template-columns:1fr;}}
+        button, input, select {width:100%; padding:10px; margin:5px 0; background:#eee; border:none;}
     </style>
 </head>
 <body>
 
 <header>
-    <h2>Hair and Beauty Parlour Listing</h2>
+    Hair and Beauty Parlour Listing - Wireframe
 </header>
 
-<div class="hero">Find Parlours Near You</div>
-
-<div class="controls">
-    <h3>Register Your Parlour</h3>
-    <input type="text" id="parlourName" placeholder="Parlour Name"><br>
-    <select id="parlourLocation">
-        <option value="">Select Location</option>
-        <option>Gaborone</option>
-        <option>Francistown</option>
-        <option>Maun</option>
-        <option>Kasane</option>
-    </select><br>
-    <input type="text" id="parlourServices" placeholder="Services (Hair, Nails, Makeup)"><br>
-    <button onclick="registerParlour()">Register Parlour</button>
+<div class="hero">
+    Hero Section (Banner / Image)
 </div>
 
-<div class="controls">
-    <select id="locationFilter" onchange="filterParlours()">
-        <option value="all">All Locations</option>
-        <option>Gaborone</option>
-        <option>Francistown</option>
-        <option>Maun</option>
-        <option>Kasane</option>
-    </select>
+<div class="section">
+    <h3>Parlour Registration Form (Wireframe)</h3>
+    <div class="form-box">
+        <input type="text" placeholder="Parlour Name">
+        <select>
+            <option>Select Location</option>
+        </select>
+        <input type="text" placeholder="Services">
+        <button>Register Parlour</button>
+    </div>
 </div>
 
-<div class="container" id="parlourList">
-    <!-- Registered parlours will appear here -->
+<div class="section">
+    <h3>Filter by Location (Wireframe)</h3>
+    <div class="form-box">
+        <select>
+            <option>All Locations</option>
+        </select>
+        <button>Filter</button>
+    </div>
 </div>
 
-<footer>© 2026 Hair and Beauty Parlour Listing</footer>
+<div class="section">
+    <h3>Parlour Listings (Wireframe)</h3>
+    <div class="container">
+        <div class="card">Parlour Card</div>
+        <div class="card">Parlour Card</div>
+        <div class="card">Parlour Card</div>
+        <div class="card">Parlour Card</div>
+        <div class="card">Parlour Card</div>
+    </div>
+</div>
 
-<script>
-let parlours = [];
-
-function registerParlour() {
-    let name = document.getElementById("parlourName").value;
-    let location = document.getElementById("parlourLocation").value;
-    let services = document.getElementById("parlourServices").value;
-
-    if(!name || !location || !services){
-        alert("Please fill all fields!");
-        return;
-    }
-
-    let parlour = {name, location, services};
-    parlours.push(parlour);
-
-    displayParlours();
-    clearForm();
-}
-
-function displayParlours() {
-    let container = document.getElementById("parlourList");
-    container.innerHTML = "";
-
-    let filter = document.getElementById("locationFilter").value;
-
-    parlours.forEach(p => {
-        if(filter === "all" || p.location === filter){
-            let card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `<h3>${p.name}</h3>
-                              <p>Location: ${p.location}</p>
-                              <p>Services: ${p.services}</p>`;
-            container.appendChild(card);
-        }
-    });
-}
-
-function filterParlours() {
-    displayParlours();
-}
-
-function clearForm() {
-    document.getElementById("parlourName").value = "";
-    document.getElementById("parlourLocation").value = "";
-    document.getElementById("parlourServices").value = "";
-}
-</script>
+<footer style="text-align:center; padding:10px; background:#ccc;">
+    Footer
+</footer>
 
 </body>
 </html>
